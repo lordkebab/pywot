@@ -1,6 +1,7 @@
 ''' A library providing a python interface to Wargaming.net's World of Tanks API '''
 
 import requests
+import json
 
 class API(object):
 
@@ -9,7 +10,15 @@ class API(object):
 	def __init__(self, app_id):
 		self.app_id = app_id
 
-	def _api_call(self, **kwargs):
+	def _api_call(self, url, **kwargs):
 		''' Initiates an API call '''
-		r = requests.get('https://api.worldoftanks.com/wot/encyclopedia/tanks', params=kwargs)
-		return r.json()
+		
+		payload = kwargs
+		
+		# add the application id to our payload
+		payload['application_id'] = self.app_id
+		r = requests.get(url, params=payload)
+		
+		# return pretty-printed json
+		return json.dumps(r.json(), sort_keys=True, indent=4)
+				
