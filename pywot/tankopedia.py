@@ -36,8 +36,46 @@ class Tankopedia(API):
 
 		return self._api_call(endpoint=endpoint, fields=fields, language=language)
 
-	
+	def radios(self, fields='', language='en', module_id='', nation=''):
+		endpoint = '/encyclopedia/tankradios/'
 
+		if type(fields) is list:
+			fields = self._format_fields(fields)
+
+		return self._api_call(endpoint=endpoint, fields=fields, language=language)
+	
+	def suspensions(self, fields='', language='en', module_id='', nation=''):
+		endpoint = '/encyclopedia/tankchassis/'
+
+		if type(fields) is list:
+			fields = self._format_fields(fields)
+
+		return self._api_call(endpoint=endpoint, fields=fields, language=language)
+
+	def guns(self, fields='', language='en', module_id='', nation='usa', turret_id='', tank_id=''):		
+		endpoint = '/encyclopedia/tankguns/'
+
+		if type(fields) is list:
+			fields = self._format_fields(fields)
+
+		return self._api_call(endpoint=endpoint, fields=fields, language=language,
+			module_id=module_id, nation=nation, turret_id=turret_id, tank_id=tank_id)
+
+	def info(self, fields='', language='en'):
+		endpoint = '/encyclopedia/info/'
+
+		if type(fields) is list:
+			fields = self._format_fields(fields)
+
+		return self._api_call(endpoint=endpoint, fields=fields, language=language)
+
+	def maps(self, fields='', language='en'):
+		endpoint = '/encyclopedia/arenas/'
+
+		if type(fields) is list:
+			fields = self._format_fields(fields)
+
+		return self._api_call(endpoint=endpoint, fields=fields, language=language)
 
 
 
