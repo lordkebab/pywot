@@ -3,5 +3,5 @@ python:
 "2.6"
 "2.7"
 # install requests dependency
-install "pip install requests"
+install: "pip install requests"
 script: nosetests 
