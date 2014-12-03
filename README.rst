@@ -42,25 +42,25 @@ Once you obtain your Application ID, instantiate a new instance of pywot.  The f
 
 You can get the details of a particular tank with the vehicle_details method.  Here is how you would get the details of the KV-1S:
 
-.. code-block: pycon
+.. code-block:: pycon
 	
 	>>> print t.vehicle_details(tank_id=18689)
 
 Or, just get a few fields:
 
-.. code-block: pycon
+.. code-block:: pycon
 
 	>>> print t.vehicle_details(tank_id=18689, fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
 The field names can be obtained from the `API Reference <https://na.wargaming.net/developers/api_reference/wot/account/list/>`_.  They can be passed in as a comma-delimited string or a python list of string values, as shown above.  You can also pass in multipe tank_id's the same way:
 
-.. code-block: pycon
+.. code-block:: pycon
 
 	>>> print t.vehicle_details(tank_id=['18689','33'], fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
 PyWOT also supports specifying different languages for the response:
 
-.. code-block: pycon
+.. code-block:: pycon
 
 	>>> print t.vehicle_details(language='ko', tank_id=['18689','33'], fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
@@ -68,7 +68,7 @@ In order to see the publicly available player statistics, first use the search_p
 
 To get all the achievements of a player with the nickname "lulz_man" do the following:
 
-.. code-block: pycon
+.. code-block:: pycon
 
 	>>> app = API('your-app-id')
 	>>> p = Player(app.app_id)
