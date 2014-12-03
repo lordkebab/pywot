@@ -55,7 +55,7 @@ Or, just get a few fields:
 		tank_id=18689, 
 		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
-The field names can be obtained from the `API Reference <https://na.wargaming.net/developers/api_reference/wot/account/list/>`_.  They can be passed in as a comma-delimited string or a python list of string values, as shown above.  You can also pass in multipe tank_id's the same way:
+The field names can be obtained from the `API Reference <https://na.wargaming.net/developers/api_reference/wot/account/list>`_.  They can be passed in as a comma-delimited string or a python list of string values, as shown above.  You can also pass in multipe tank_id's the same way:
 
 .. code-block:: pycon
 
