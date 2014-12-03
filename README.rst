@@ -5,6 +5,9 @@ PyWOT: Python World of Tanks API Wrapper
 
 .. begin_description
 
+.. image:: https://travis-ci.org/mattselph/pywot.svg?branch=master
+		   :target: https://travis-ci.org/mattselph/pywot
+
 A library providing a python interface to Wargaming.net's World of Tanks API.  In order to use this API, you must register as a developer and add an application for free at `Wargaming.net <https://na.wargaming.net/developers>`_.  You will then be given an application ID that you will use when making API calls.  
 
 As of this release the API only works with the North American servers.
