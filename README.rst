@@ -50,19 +50,26 @@ Or, just get a few fields:
 
 .. code-block:: pycon
 
-	>>> print t.vehicle_details(tank_id=18689, fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+	>>> print t.vehicle_details(
+		tank_id=18689, 
+		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
 The field names can be obtained from the `API Reference <https://na.wargaming.net/developers/api_reference/wot/account/list/>`_.  They can be passed in as a comma-delimited string or a python list of string values, as shown above.  You can also pass in multipe tank_id's the same way:
 
 .. code-block:: pycon
 
-	>>> print t.vehicle_details(tank_id=['18689','33'], fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+	>>> print t.vehicle_details(
+		tank_id=['18689','33'], 
+		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
 PyWOT also supports specifying different languages for the response:
 
 .. code-block:: pycon
 
-	>>> print t.vehicle_details(language='ko', tank_id=['18689','33'], fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+	>>> print t.vehicle_details(
+		language='ko', 
+		tank_id=['18689','33'], 
+		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
 
 In order to see the publicly available player statistics, first use the search_players method, sending it an un-wildcarded search string of a user's nickname. Once you have the player's exact nickname, use the get_account_id method to retrieve that player's account_id which will be used in subsequent methods.  You can also chain those method calls together as in the example below.
 
