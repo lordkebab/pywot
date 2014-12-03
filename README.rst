@@ -35,7 +35,8 @@ Once you obtain your Application ID, instantiate a new instance of pywot.  The f
 
 .. code-block:: pycon
 
-	>>> import pywot
+	>>> from pywot.api import API
+	>>> from pywot.tankopedia import Tankopedia
 	>>> app = API('your-app-id')
 	>>> t = Tankopedia(app.app_id)
 	>>> print t.list_of_vehicles()
@@ -77,6 +78,8 @@ To get all the achievements of a player with the nickname "lulz_man" do the foll
 
 .. code-block:: pycon
 
+	>>> from pywot.api import API
+	>>> from pywot.player import Player
 	>>> app = API('your-app-id')
 	>>> p = Player(app.app_id)
 	>>> print p.player_achievements(account_id=p.get_account_id(nickname='lulz_man'))
