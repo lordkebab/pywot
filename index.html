@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Pywot by mattselph</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Pywot</h1>
+        <h2>A library providing a python interface to Wargaming.net&#39;s World of Tanks API</h2>
+        <a href="https://github.com/mattselph/pywot" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="pywot-python-world-of-tanks-api-wrapper" class="anchor" href="#pywot-python-world-of-tanks-api-wrapper" aria-hidden="true"><span class="octicon octicon-link"></span></a>PyWOT: Python World of Tanks API Wrapper</h1>
+
+<p>A library providing a python interface to Wargaming.net's World of Tanks API.  In order to use this API, you must register as a developer and add an application for free at <a href="https://na.wargaming.net/developers">Wargaming.net</a>.  You will then be given an application ID that you will use when making API calls.  </p>
+
+<p>As of this release the API only works with the North American servers.</p>
+
+<p>All results are returned as JSON documents.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>PyWOT works with Python 2.6 and 2.7 as of this release.  It can be installed using pip:</p>
+
+<pre><code>$ pip install pywot
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Once you obtain your Application ID, instantiate a new instance of pywot.  The following will get a list of all the tanks in the game:</p>
+
+<pre><code>&gt;&gt;&gt; from pywot.api import API
+&gt;&gt;&gt; from pywot.tankopedia import Tankopedia
+&gt;&gt;&gt; app = API('your-app-id')
+&gt;&gt;&gt; t = Tankopedia(app.app_id)
+&gt;&gt;&gt; print t.list_of_vehicles()
+</code></pre>
+
+<p>You can get the details of a particular tank with the vehicle_details method.  Here is how you would get the details of the KV-1S:</p>
+
+<pre><code>&gt;&gt;&gt; print t.vehicle_details(tank_id=18689)
+</code></pre>
+
+<p>Or, just get a few fields:</p>
+
+<pre><code>&gt;&gt;&gt; print t.vehicle_details(
+    tank_id=18689, 
+    fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+</code></pre>
+
+<p>The field names can be obtained from the <a href="https://na.wargaming.net/developers/api_reference/wot/account/list">API Reference</a>.  They can be passed in as a comma-delimited string or a python list of string values, as shown above.  You can also pass in multipe tank_id's the same way:</p>
+
+<pre><code>&gt;&gt;&gt; print t.vehicle_details(
+    tank_id=['18689','33'], 
+    fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+</code></pre>
+
+<p>PyWOT also supports specifying different languages for the response:</p>
+
+<pre><code>&gt;&gt;&gt; print t.vehicle_details(
+    language='ko', 
+    tank_id=['18689','33'], 
+    fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+</code></pre>
+
+<p>In order to see the publicly available player statistics, first use the search_players method, sending it an un-wildcarded search string of a user's nickname. Once you have the player's exact nickname, use the get_account_id method to retrieve that player's account_id which will be used in subsequent methods.  You can also chain those method calls together as in the example below.</p>
+
+<p>To get all the achievements of a player with the nickname "lulz_man" do the following:</p>
+
+<pre><code>&gt;&gt;&gt; from pywot.api import API
+&gt;&gt;&gt; from pywot.player import Player
+&gt;&gt;&gt; app = API('your-app-id')
+&gt;&gt;&gt; p = Player(app.app_id)
+&gt;&gt;&gt; print p.player_achievements(account_id=p.get_account_id(nickname='lulz_man'))
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/mattselph/pywot/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/mattselph/pywot/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/mattselph/pywot"></a> is maintained by <a href="https://github.com/mattselph">mattselph</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
