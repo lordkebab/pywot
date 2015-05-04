@@ -4,7 +4,9 @@ from api import API
 import json
 
 class Player(API):
-	''' Methods herein return all publicly exposed data. '''
+
+	def __init__(self, app_id):
+		API.__init__(self,app_id)	
 
 	def search_players(self, lang='en', search='', fields=''):
 		''' Player API methods require an account_id.  This method allows you to search for players if you don't know

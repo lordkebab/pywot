@@ -4,6 +4,9 @@ from api import API
 
 class Rating(API):
 
+	def __init__(self, app_id):
+		API.__init__(self,app_id)
+
 	def rating_types(self, lang='en', fields=''):
 		endpoint = '/ratings/types/'
 
