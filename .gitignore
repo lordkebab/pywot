@@ -1,3 +1,4 @@
 *.pyc
 test.py
 dist/
+localenv_py3/
