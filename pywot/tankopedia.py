@@ -1,6 +1,6 @@
 ''' Query the Tankopedia API '''
 
-from api import API
+from pywot.api import API
 
 class Tankopedia(API):
 

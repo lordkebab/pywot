@@ -1,6 +1,6 @@
 ''' Query the WOT Ratings API '''
 
-from api import API
+from pywot.api import API
 
 class Rating(API):
 

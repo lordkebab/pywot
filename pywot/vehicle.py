@@ -1,6 +1,6 @@
 ''' Query a player's vehicle stats '''
 
-from api import API
+from pywot.api import API
 
 class Vehicle(API):
 

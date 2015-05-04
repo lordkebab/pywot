@@ -1,6 +1,6 @@
 ''' Query players and their stats '''
 
-from api import API
+from pywot.api import API
 import json
 
 class Player(API):
