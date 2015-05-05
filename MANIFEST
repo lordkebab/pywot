@@ -6,5 +6,4 @@ pywot/api.py
 pywot/player.py
 pywot/rating.py
 pywot/tankopedia.py
-pywot/test.py
 pywot/vehicle.py
