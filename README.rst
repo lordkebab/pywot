@@ -21,7 +21,7 @@ All results are returned as JSON documents.
 Installation
 ------------
 
-PyWOT works with Python 2.6 and 2.7 as of this release.  It can be installed using pip:
+New in version 1.0, PyWOT works with Python 2.6+. Install using pip:
 
 .. code-block:: bash
 
@@ -34,15 +34,13 @@ PyWOT works with Python 2.6 and 2.7 as of this release.  It can be installed usi
 Usage
 -----
 
-Once you obtain your Application ID, instantiate a new instance of pywot.  The following will get a list of all the tanks in the game:
+Once you obtain your Application ID, you can use it to instantiate new instances of the various classes (Tankopedia, Player, Rating, Vehicles).  The following will get a list of all the tanks in the game:
 
 .. code-block:: pycon
-
-	>>> from pywot.api import API
-	>>> from pywot.tankopedia import Tankopedia
-	>>> app = API('your-app-id')
-	>>> t = Tankopedia(app.app_id)
-	>>> print t.list_of_vehicles()
+	
+	>>> from pywot.tankopedia import Tankopedia	
+	>>> t = Tankopedia('your-app-id')
+	>>> print(t.list_of_vehicles())
 
 You can get the details of a particular tank with the vehicle_details method.  Here is how you would get the details of the KV-1S:
 
@@ -62,30 +60,38 @@ The field names can be obtained from the `API Reference <https://na.wargaming.ne
 
 .. code-block:: pycon
 
-	>>> print t.vehicle_details(
-		tank_id=['18689','33'], 
-		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+	>>> print(t.vehicle_details(tank_id=18689, 	fields=['tank_id','nation','speed_limit','engines.module_id']))
 
 PyWOT also supports specifying different languages for the response:
 
 .. code-block:: pycon
 
-	>>> print t.vehicle_details(
+	>>> print(t.vehicle_details(
 		language='ko', 
 		tank_id=['18689','33'], 
-		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id'])
+		fields=['tank_id', 'nation', 'speed_limit', 'engines.module_id']))
 
-In order to see the publicly available player statistics, first use the search_players method, sending it an un-wildcarded search string of a user's nickname. Once you have the player's exact nickname, use the get_account_id method to retrieve that player's account_id which will be used in subsequent methods.  You can also chain those method calls together as in the example below.
+Querying for player statistics can be done by supplying either an account_id or a nickname.
 
 To get all the achievements of a player with the nickname "lulz_man" do the following:
 
 .. code-block:: pycon
 
-	>>> from pywot.api import API
 	>>> from pywot.player import Player
-	>>> app = API('your-app-id')
-	>>> p = Player(app.app_id)
-	>>> print p.player_achievements(account_id=p.get_account_id(nickname='lulz_man'))
+	>>> p = Player('your-app-id')
+	>>> print(p.player_achievements(nickname='lulz_man'))
+
+The wrapper will handle figuring out what the account_id is.  
+
+If you aren't sure what the player's nickname is, you can use the search_players method to find it.
+
+If you already have an account_id, you can supply that as well.  Here's how to get all the vehicles from a player if his or her account_id is known:
+
+.. code-block:: pycon
+
+	>>> from pywot.player import Player
+	>>> p = Player('your-app-id')
+	>>> print(p.player_vehicles(1008273454))
 
 .. end_usage
 
