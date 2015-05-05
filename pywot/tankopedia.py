@@ -1,8 +1,11 @@
 ''' Query the Tankopedia API '''
 
-from api import API
+from pywot.api import API
 
 class Tankopedia(API):
+
+	def __init__(self, app_id):
+		API.__init__(self,app_id)
 
 	def list_of_vehicles(self, fields='', language='en'):
 		endpoint = '/encyclopedia/tanks/'	
