@@ -20,7 +20,7 @@ class API(object):
 
 		# add the application id to our payload
 		payload['application_id'] = self.app_id
-		r = requests.get(self.BASE_URL+endpoint, params=payload)
-		
+		r = requests.get(self.BASE_URL+endpoint, params=payload)				
+
 		return json.dumps(r.json(), sort_keys=True, indent=4)
 				
