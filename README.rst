@@ -21,7 +21,7 @@ All results are returned as JSON documents.
 Installation
 ------------
 
-New in version 1.0, PyWOT works with Python 2.6+. Install using pip:
+PyWOT works with Python 2.6 and Python 2.7. Install using pip:
 
 .. code-block:: bash
 
