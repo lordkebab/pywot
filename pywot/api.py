@@ -4,6 +4,7 @@ import requests
 import json
 
 class API(object):
+	''' Base API object.  You should never have to call this method directly '''
 
 	BASE_URL = 'https://api.worldoftanks.com/wot'	# no trailing slash
 
